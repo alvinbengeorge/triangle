@@ -1,7 +1,7 @@
 from langgraph.graph import StateGraph, MessagesState, START, END
 from generation import generate_text
 from database import BasicChromaDB
-from client import Client
+from model import Client
 from ollama import chat
 
 import os
@@ -152,7 +152,7 @@ TRY NOT TO PUT PLACEHOLDERS. DO NOT PUT ANY NOTES, just create the reply email
                 existing_files = [f for f in os.listdir("./storage/") if f.endswith(".md")]
                 file_number = len(existing_files) + 1
                 file_name = f"./storage/{file_number}.md"
-                formatted_content = f"# Complaint #{file_number}\n\n##Content\n{complain}"
+                formatted_content = f"# Complaint #{file_number}\n\n##Content\n{complain}\n\n##Client Details\nName: {self.client.name}\nPhone: {self.client.phone}\n"
                 
                 with open(file_name, "w") as f:
                     f.write(formatted_content)

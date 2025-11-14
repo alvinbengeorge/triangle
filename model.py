@@ -1,3 +1,5 @@
+from pydantic import BaseModel
+
 class Client:
     def __init__(self, name: str, phone_number: str):
         self.name = name
@@ -14,3 +16,8 @@ class Client:
 NAME: {self.name}
 PHONE: {self.phone}
 """
+
+class Ticket(BaseModel):
+    name: str
+    phone: str
+    complaint: str
